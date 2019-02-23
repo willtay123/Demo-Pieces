@@ -1,0 +1,107 @@
+﻿class RenderVisitor {
+    constructor(pContext) {
+        this.mMatrixStack = [];
+        this.setContext(pContext);
+    }
+
+    getContext() {
+        return this.mContext;
+    }
+    setContext(pContext) {
+        this.mContext = pContext;
+    }
+
+    getMatrixStack() {
+        return this.mMatrixStack;
+    }
+    setMatrixStack(pMatrixStack) {
+        this.mMatrixStack = pMatrixStack;
+    }
+
+    visit(pNode) {
+        //get object type and handle it accordingly
+
+        var type = pNode.getType();
+
+        switch (type) {
+            case 'Group':
+                this.visitGroup(pNode);
+                break;
+            case 'Visibility':
+                this.visitVisibility(pNode);
+                break;
+            case 'Transform':
+                this.visitTransform(pNode);
+                break;
+            case 'Draw':
+                this.visitGeometry(pNode);
+                break;
+            case 'State':
+                this.visitState(pNode);
+                break;
+        }
+    }
+
+    visitGroup(pNode) {
+        var index, child;
+        for (index = 0; index < pNode.getChildCount(); index += 1) {
+            child = pNode.getChild(index);
+            child.accept(this);
+        }
+    }
+
+    visitVisibility(pNode) {
+        if (pNode.shouldDraw()) {
+            this.visitGroup(pNode);
+        }
+    }
+
+    visitTransform(pNode) {
+        this.pushTransform(pNode.getLocal());
+        this.visitGroup(pNode);
+        this.popTransform();
+    }
+
+    visitGeometry(pNode) {
+        //sets the context matrix
+        this.peekTransform().setTransform(this.mContext);
+
+        //draws the node
+        pNode.draw(this.mContext);
+    }
+
+    visitState(pNode) {
+        //changes the state of the context effects
+        var key = pNode.getKey();
+        var value = pNode.getValue();
+
+        var oldVal = this.mContext[key]; //store the old canvas value
+        this.mContext[key] = value; //change the canvas value to the new value
+
+        this.visitGroup(pNode); //use the new value on the children
+
+        this.mContext[key] = oldVal; //set the canvas value back to the previous one
+    }
+
+    pushTransform(pMatrix) {
+        if (this.mMatrixStack.length === 0) {
+            this.mMatrixStack.push(pMatrix);
+        } else {
+            var oldTop = this.peekTransform();
+
+            var newTop = oldTop.multiply(pMatrix);
+
+            this.mMatrixStack.push(newTop);
+        }
+    }
+
+    popTransform() {
+        this.mMatrixStack.pop();
+    }
+
+    peekTransform() {
+        var num = this.mMatrixStack.length;
+
+        return this.mMatrixStack[num - 1];
+    }
+}

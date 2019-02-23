@@ -1,0 +1,50 @@
+﻿<!doctype html>
+
+<html>
+    <head>
+        <title>Asteroids</title>
+        <link rel="stylesheet" href="css/main.css" type="text/css" />
+        <script type="text/javascript" src="js/main.js"></script>
+    
+        <!-- logic files -->
+        <script type="text/javascript" src="js/vector.js"></script>
+        <script type="text/javascript" src="js/matrix.js"></script>
+        <script type="text/javascript" src="js/drawable.js"></script>
+        <script type="text/javascript" src="js/physicsMover.js"></script>
+        <script type="text/javascript" src="js/collision.js"></script>
+        <script type="text/javascript" src="js/shapeGenerator.js"></script>
+    
+        <!-- entities -->
+        <script type="text/javascript" src="js/entities/line.js"></script>
+        <script type="text/javascript" src="js/entities/physicsCircle.js"></script>
+        <script type="text/javascript" src="js/entities/physicsBox.js"></script>
+        <script type="text/javascript" src="js/entities/player.js"></script>
+        <script type="text/javascript" src="js/entities/bullet.js"></script>
+        <script type="text/javascript" src="js/entities/asteroid.js"></script>
+    
+        <!-- bounding volume files -->
+        <script type="text/javascript" src="js/boundingVolumeNode.js"></script>
+    
+        <!-- Scene Graph files -->
+        <script type="text/javascript" src="js/scenegraph/sceneGraphNode.js"></script>
+        <script type="text/javascript" src="js/scenegraph/sceneGraphGroup.js"></script>
+        <script type="text/javascript" src="js/scenegraph/sceneGraphState.js"></script>
+        <script type="text/javascript" src="js/scenegraph/sceneGraphTransform.js"></script>
+                                                    
+        <script type="text/javascript" src="js/scenegraph/sceneGraphVisible.js"></script>
+        <script type="text/javascript" src="js/scenegraph/sceneGraphGeometry.js"></script>
+        <script type="text/javascript" src="js/scenegraph/sceneGraphArc.js"></script>
+        <script type="text/javascript" src="js/scenegraph/sceneGraphImage.js"></script>
+        <script type="text/javascript" src="js/scenegraph/sceneGraphAnimatedImage.js"></script>
+                                                    
+        <script type="text/javascript" src="js/scenegraph/sceneGraphBranchCreator.js"></script>
+        <script type="text/javascript" src="js/scenegraph/renderVisitor.js"></script>
+    </head>
+    <body>
+        <h1>Asteroids! - William Taylor</h1>
+        <canvas id="mainCanvas" width="800" height="600">
+            Your browser does not support the canvas tag
+        </canvas>
+        <p>Arrow keys to move, space to shoot.</p>
+    </body>
+</html>

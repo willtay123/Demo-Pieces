@@ -1,0 +1,26 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Chewy');
+
+body {
+    font-family: 'chewy', sans-serif;    
+}
+
+.centered-wrapper {
+	position: fixed;
+	top:0%;
+	left:15%;
+}
+
+.centered-content {
+	text-align: center;
+	display: inline-block;
+	vertical-align:middle;
+}
+
+.centered-content h1 {
+    font-size: 50px;
+}
+
+canvas {
+   border: black 10px solid;
+   border-radius: 10px;
+ }

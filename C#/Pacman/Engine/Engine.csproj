@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70E8EC59-5D24-4C8F-97AF-E12B58E68063}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Engine</RootNamespace>
+    <AssemblyName>Engine</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\Game\packages\OpenTK.2.0.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\ComponentAudio.cs" />
+    <Compile Include="Components\ComponentCollision.cs" />
+    <Compile Include="Components\ComponentCollisionBox.cs" />
+    <Compile Include="Components\ComponentCollisionCircle.cs" />
+    <Compile Include="Components\ComponentGeometry.cs" />
+    <Compile Include="Components\ComponentLives.cs" />
+    <Compile Include="Components\ComponentScore.cs" />
+    <Compile Include="Components\ComponentTransform.cs" />
+    <Compile Include="Components\ComponentTexture.cs" />
+    <Compile Include="Components\ComponentValue.cs" />
+    <Compile Include="Components\ComponentMovement.cs" />
+    <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Components\IComponentControl.cs" />
+    <Compile Include="Managers\EntityManager.cs" />
+    <Compile Include="Managers\FileManager.cs" />
+    <Compile Include="Managers\ResourceManager.cs" />
+    <Compile Include="Managers\SceneManager.cs" />
+    <Compile Include="Managers\SystemManager.cs" />
+    <Compile Include="Objects\Camera.cs" />
+    <Compile Include="Objects\Entity.cs" />
+    <Compile Include="Objects\Geometry.cs" />
+    <Compile Include="Objects\NavMap.cs" />
+    <Compile Include="Objects\NavNode.cs" />
+    <Compile Include="Objects\Scoreboard.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\DefaultScene.cs" />
+    <Compile Include="Scenes\GUI.cs" />
+    <Compile Include="Scenes\IScene.cs" />
+    <Compile Include="Scenes\Scene.cs" />
+    <Compile Include="Systems\ISystem.cs" />
+    <Compile Include="Systems\ISystemCollisionResponse.cs" />
+    <Compile Include="Systems\SystemAudio.cs" />
+    <Compile Include="Systems\SystemCollisionDetection.cs" />
+    <Compile Include="Systems\SystemLinearMovement.cs" />
+    <Compile Include="Systems\SystemMovement.cs" />
+    <Compile Include="Systems\SystemRender.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Shaders\fs.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Shaders\vs.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\Game\packages\openal.redist.2.0.7.0\build\net40\openal.redist.targets" Condition="Exists('..\Game\packages\openal.redist.2.0.7.0\build\net40\openal.redist.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+  </Target>
+</Project>
