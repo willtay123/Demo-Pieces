@@ -45,7 +45,7 @@ bool EntityManager::RemoveEntity(const char* mapID, string entityID) {
 
 		// Search entity list for desired entity to delet
 		vector<Entity*> entityList = *(itr->second);
-		for (int i = 0; i < entityList.size(); i += 1) {
+		for (int i = 0; i < (int)entityList.size(); i += 1) {
 			Entity* entity = entityList[i];
 			string* currentEntityID = entity->GetID();
 			if (entityID == *currentEntityID) {

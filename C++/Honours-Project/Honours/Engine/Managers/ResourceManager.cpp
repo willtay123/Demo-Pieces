@@ -92,6 +92,7 @@ Geometry* ResourceManager::LoadObj(const char* filepath) {
 		ifstream inFile(filepath);
 		if (!inFile) {
 			cout << "ERROR: unable to load model - " << filepath << endl;;
+			throw std::exception("Unable to load model, file missing?");
 			return NULL;
 		}
 
