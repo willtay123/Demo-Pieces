@@ -1,4 +1,4 @@
-This is the submission I handed in for "Games Architecture"
+# This is the submission I handed in for "Games Architecture"
 
 Controls:
 Up Arrow	moves forward
