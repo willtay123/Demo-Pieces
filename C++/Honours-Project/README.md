@@ -1,11 +1,13 @@
 # Honours Stage Project
-  
+</br>
 For my Uni Honours Project I am creating a Component-Based Game Engine, making use of the messenger approach.
-  
+</br>
 Wiki Page: https://github.com/willtay123/Demo-Pieces/wiki/Honours-Project
-
+</br>
 NOTICE:
-  
-Project must be run in x32 bit
-  
-Project may have issues with Include missing its reference to the "External Resources" folder
+</br>
+Due to uni guidelines, I am unable to place my code on a public repo.
+</br>
+If you would like to see my honours project code, message me at:
+</br>
+https://www.williamtaylor.me.uk/contact
